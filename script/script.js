@@ -27,53 +27,49 @@ function removeBook(index) {
 
 //render library to table
 function renderList(books, tBody) {
+	let htmlString = '';
+
 	books.forEach((book, idx) => {
-		const tr = document.createElement('tr');
-		tr.style.backgroundColor =
-			idx % 2 === 0 ? 'white' : 'hsla(0, 0%, 70%, .3)';
-		tr.id = `bk-${idx}`;
-		tr.classList.add('onHover', 'entry');
+		//new plan is to create html string that will be inserted in tbody innerHTML;
+		htmlString += `<tr class="onHover entry ${
+			idx % 2 === 0 ? '' : 'bg-grey'
+		}" >`;
 
 		//create, fill in and append columns for book info
 		for (const key in book) {
-			const td = document.createElement('td');
-			td.classList.add(`book-${key}`);
-			td.innerText = book[key];
-			tr.append(td);
+			htmlString += `<td class="book-${key}">${book[key]}</td>`;
 		}
 
-		//column for delete button
-		const td = document.createElement('td');
-		const button = document.createElement('div');
-		button.classList.add('delete-btn', 'hidden');
-		button.innerText = 'x';
-		button.id = `del-${idx}`;
-		td.classList.add('book-delete');
-		td.append(button);
-		tr.append(td);
+		htmlString += `<td class="book-delete"><div id="del-${idx}" class="delete-btn hidden">x</div></td></tr>`;
+	});
 
-		//pop up delete button on hover at row
-		tr.addEventListener('mouseover', (e) => {
+	tBody.innerHTML = htmlString;
+
+	const td = document.querySelectorAll('td');
+	const button = document.querySelectorAll('.delete-btn');
+
+	//pop up delete button on hover at row
+	td.forEach((td) => {
+		td.addEventListener('mouseover', (e) => {
+			console.log(e.target.parentNode.lastChild);
 			if (!e.target.classList.contains('delete-btn'))
 				e.target.parentNode.lastChild.lastChild.classList.toggle('hidden');
 		});
 
 		//hide delete button when mouse leaves row
-		tr.addEventListener('mouseout', (e) => {
+		td.addEventListener('mouseout', (e) => {
 			if (!e.target.classList.contains('delete-btn'))
 				e.target.parentNode.lastChild.lastChild.classList.toggle('hidden');
 		});
+	});
 
+	button.forEach((button) => {
 		button.addEventListener('click', (e) => {
 			e.target.parentNode.parentNode.remove();
 			const tBody = document.querySelector('tbody');
 			const library = removeBook(e.target.id.substr(4));
 			renderList(library, tBody);
 		});
-
-		console.log('renderLib executed');
-
-		tBody.append(tr);
 	});
 }
 

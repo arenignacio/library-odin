@@ -79,9 +79,11 @@ tbody {
 
 .delete-btn {
 	margin: 5px;
+	font-size: 16px;
 	font-weight: bold;
 	&:hover {
 		display: block;
+		font-size: 20px;
 	}
 }
 
@@ -96,5 +98,11 @@ tbody {
 	transition: ease-in-out 0.5s;
 	&:hover {
 		transform: scale(1.3);
+	}
+}
+
+.bg {
+	&-grey {
+		background-color: hsla(0, 0%, 70%, 0.3);
 	}
 }
