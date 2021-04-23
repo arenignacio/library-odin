@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Montserrat:wght@300&family=Roboto:wght@400&display=swap');
+
+@media only screen and (min-width: 1200px) {
+	body {
+		margin: 0px 20%;
+	}
+}
+
+header {
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0px 0px 0px;
+	border: 1px black solid;
+}
+
+table {
+	width: 100%;
+}
+
+thead {
+	tr {
+		border-bottom: solid black 1px;
+		font-family: 'Montserrate', serif;
+		font-weight: bold;
+		height: 25px;
+		text-align: left;
+		letter-spacing: 1px;
+	}
+	th {
+		background-color: #fff;
+		position: sticky;
+		top: 0px;
+	}
+}
+
+tbody {
+	tr {
+		height: 35px;
+		td {
+			vertical-align: middle;
+		}
+	}
+}
+
+.book {
+	&-title {
+		width: 40%;
+	}
+	&-author {
+		width: 30%;
+	}
+	&-pages {
+		width: 15%;
+	}
+	&-status {
+		width: 12%;
+	}
+	&-delete {
+		width: 3%;
+	}
+}
+
+#title {
+	font-family: 'Homemade Apple', serif;
+	font-size: 24px;
+}
+
+#table-container {
+	height: 600px;
+	overflow: auto;
+	margin: 70px;
+}
+
+.hidden {
+	display: none;
+}
+
+.delete-btn {
+	margin: 5px;
+	font-weight: bold;
+	&:hover {
+		display: block;
+	}
+}
+
+.onHover {
+	&:hover {
+		color: brown;
+		cursor: pointer;
+	}
+}
+
+.enlargeHover {
+	transition: ease-in-out 0.5s;
+	&:hover {
+		transform: scale(1.3);
+	}
+}
