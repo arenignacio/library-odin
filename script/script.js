@@ -1,3 +1,6 @@
+/* TODO:
+Add new book, update book functionality */
+
 //Create library that you can add books to
 const myLibrary = [];
 const tBody = document.querySelector('tbody');
@@ -11,17 +14,19 @@ function Book(title, author, pages, status) {
 }
 
 //add book to library
-function addBook(title, author, pages, status = false) {
+function addBook(title, author, pages, status = false, idx = '') {
 	status = status === true ? 'read' : 'unread';
 	const newBook = new Book(title, author, pages, status);
-	myLibrary.push(newBook);
+	if (!idx) myLibrary.push(newBook);
+	else myLibrary.splice(idx, 1, newBook); //if an index is provided, it's a cue to replace an element in array
+
+	return myLibrary;
 }
 
 //remove book from library
 function removeBook(index) {
 	myLibrary.splice(index, 1);
 	renderList(myLibrary, tBody);
-
 	return myLibrary;
 }
 

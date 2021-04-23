@@ -17,20 +17,51 @@
 				<table id="books-table">
 					<thead>
 						<tr>
-							<div>		
-								<th class="book-title">Title</th>
-								<th class="book-author">Author</th>
-								<th class="book-pages">Pages</th>
-								<th class="book-status">Status</th>
-								<th class="book-delete "></th>
-							</div>
-					
+							<th class="book-title">Title</th>
+							<th class="book-author">Author</th>
+							<th class="book-pages">Pages</th>
+							<th class="book-status">Status</th>
+							<th class="book-delete"></th>
 						</tr>
-						<tbody></tbody>
 					</thead>
+					<tbody></tbody>
 				</table>
 			</div>
+
+			<div id="form-container" class="">
+				<form class="">
+					<div id="form-header">
+						<span id="f-header">New Book</span>
+					</div>
+					<div id="form-body">
+						<span>Title</span>
+						<input type="text" name="" id="Title" /><br />
+
+						<span>Author</span>
+						<input type="text" name="" id="Author" /><br />
+
+						<span>Pages</span>
+						<input type="text" name="" id="Pages" /><br />
+
+						<div>
+							<span>Read</span>
+							<input type="checkbox" name="" id="Read" />
+						</div>
+						<br />
+
+						<div id="save-container">
+							<input type="button" value="cancel" />
+							<input type="button" value="save" />
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
+		<footer>
+			<div class="add-container">
+				<div id="add-btn">+book</div>
+			</div>
+		</footer>
 
 		<script src="script/script.js"></script>
 	</body>
