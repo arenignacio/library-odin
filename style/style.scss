@@ -21,7 +21,6 @@ table {
 
 thead {
 	tr {
-		border-bottom: solid black 1px;
 		font-family: 'Montserrate', serif;
 		font-weight: bold;
 		height: 25px;
@@ -29,6 +28,7 @@ thead {
 		letter-spacing: 1px;
 	}
 	th {
+		box-shadow: inset 0 -1px 0 black;
 		background-color: #fff;
 		position: sticky;
 		top: 0px;
@@ -69,8 +69,15 @@ tbody {
 
 #table-container {
 	height: 600px;
-	overflow: auto;
 	margin: 70px;
+	overflow: auto;
+	&::-webkit-scrollbar {
+		width: 4px;
+		background: hsla(0, 0%, 100%, 0.5);
+		&-thumb {
+			background: gray;
+		}
+	}
 }
 
 .hidden {
@@ -80,10 +87,10 @@ tbody {
 .delete-btn {
 	margin: 5px;
 	font-size: 16px;
-	font-weight: bold;
+	color: hsl(358, 70%, 50%);
 	&:hover {
 		display: block;
-		font-size: 20px;
+		font-weight: bold;
 	}
 }
 

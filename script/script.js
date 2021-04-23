@@ -40,15 +40,16 @@ function renderList(books, tBody) {
 			htmlString += `<td class="book-${key}">${book[key]}</td>`;
 		}
 
-		htmlString += `<td class="book-delete"><div id="del-${idx}" class="delete-btn hidden">x</div></td></tr>`;
+		htmlString += `<td class="book-delete delete-btn-container"><div id="del-${idx}" class="delete-btn hidden">X</div></td></tr>`;
 	});
 
 	tBody.innerHTML = htmlString;
 
+	//select columns, buttons
 	const td = document.querySelectorAll('td');
-	const button = document.querySelectorAll('.delete-btn');
+	const button = document.querySelectorAll('.delete-btn-container');
 
-	//pop up delete button on hover at row
+	//pop up delete button on hover
 	td.forEach((td) => {
 		td.addEventListener('mouseover', (e) => {
 			console.log(e.target.parentNode.lastChild);
@@ -63,9 +64,10 @@ function renderList(books, tBody) {
 		});
 	});
 
+	//
 	button.forEach((button) => {
 		button.addEventListener('click', (e) => {
-			e.target.parentNode.parentNode.remove();
+			e.target.parentNode.remove();
 			const tBody = document.querySelector('tbody');
 			const library = removeBook(e.target.id.substr(4));
 			renderList(library, tBody);
