@@ -52,9 +52,14 @@ tbody tr td {
 }
 
 form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100%;
-  font-size: 20px;
-  font-style: italic;
 }
 
 form span {
@@ -78,7 +83,14 @@ form input[type='text']:focus {
 }
 
 form input[type='button'] {
+  border: none;
   font-size: 15px;
+  height: 35px;
+  width: 65px;
+}
+
+form input[type='button']:hover {
+  cursor: pointer;
 }
 
 footer {
@@ -92,7 +104,7 @@ footer {
   margin-left: auto;
   margin-right: 20px;
   width: 50px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .book-title {
@@ -149,6 +161,11 @@ footer {
           transform: scale(1.3);
 }
 
+.blur {
+  -webkit-filter: blur(4px);
+          filter: blur(4px);
+}
+
 .bg-grey {
   background-color: rgba(179, 179, 179, 0.3);
 }
@@ -159,7 +176,7 @@ footer {
 }
 
 #content {
-  height: 740px;
+  height: 650px;
 }
 
 #table-container {
@@ -180,23 +197,17 @@ footer {
 }
 
 #add-btn {
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
 }
 
 #add-btn:hover {
-  -webkit-transform: scale(1.3);
-          transform: scale(1.3);
+  cursor: pointer;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
-#form-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.form-container {
   position: absolute;
   top: 200px;
   left: 40%;
@@ -205,6 +216,8 @@ footer {
   border: 1px solid black;
   background-color: white;
   z-index: 2;
+  font-size: 20px;
+  font-style: italic;
 }
 
 #form-header {

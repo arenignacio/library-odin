@@ -12,8 +12,8 @@
 		<header>
 			<div id="title">My Personal Library</div>
 		</header>
-		<div id="content">
-			<div id="table-container">
+		<div id="content" class="">
+			<div id="table-container" class="">
 				<table id="books-table">
 					<thead>
 						<tr>
@@ -28,30 +28,30 @@
 				</table>
 			</div>
 
-			<div id="form-container" class="">
+			<div class="form-container hidden">
 				<form class="">
 					<div id="form-header">
 						<span id="f-header">New Book</span>
 					</div>
 					<div id="form-body">
 						<span>Title</span>
-						<input type="text" name="" id="Title" /><br />
+						<input type="text" name="" id="in-title" value="" /><br />
 
 						<span>Author</span>
-						<input type="text" name="" id="Author" /><br />
+						<input type="text" name="" id="in-author" value="" /><br />
 
 						<span>Pages</span>
-						<input type="text" name="" id="Pages" /><br />
+						<input type="text" name="" id="in-pages" value="" /><br />
 
 						<div>
 							<span>Read</span>
-							<input type="checkbox" name="" id="Read" />
+							<input type="checkbox" name="" id="in-status" value="" />
 						</div>
 						<br />
 
 						<div id="save-container">
-							<input type="button" value="cancel" />
-							<input type="button" value="save" />
+							<input type="button" value="cancel" id="cancel-btn" />
+							<input type="button" value="save" id="save-btn" />
 						</div>
 					</div>
 				</form>
