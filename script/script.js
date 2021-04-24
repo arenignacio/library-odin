@@ -35,8 +35,7 @@ function removeBook(index) {
 }
 
 function toggleForm() {
-	const form = document.querySelector('.form-container');
-	form.classList.toggle('hidden');
+	document.querySelector('.form-container').classList.toggle('hidden');
 	document.getElementById('table-container').classList.toggle('blur');
 }
 
