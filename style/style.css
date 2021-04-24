@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Montserrat:wght@300&family=Roboto:wght@400&display=swap");
 @media only screen and (min-width: 1200px) {
   body {
-    margin: 0px 20%;
+    margin: 0px 18%;
   }
 }
 
@@ -132,18 +132,18 @@ footer {
 }
 
 .delete-btn {
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
   margin: 5px;
-  font-size: 16px;
-  color: #d9262c;
+  font-size: 20px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  text-align: center;
+  vertical-align: center;
 }
 
 .delete-btn:hover {
   display: block;
   font-weight: bold;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  color: #cc3338;
 }
 
 .onHover:hover {

@@ -2,7 +2,7 @@
 
 @media only screen and (min-width: 1200px) {
 	body {
-		margin: 0px 20%;
+		margin: 0px 18%;
 	}
 }
 
@@ -116,14 +116,15 @@ footer {
 }
 
 .delete-btn {
-	transition: 0.6s;
 	margin: 5px;
-	font-size: 16px;
-	color: hsl(358, 70%, 50%);
+	font-size: 20px;
+	transform: rotate(45deg);
+	text-align: center;
+	vertical-align: center;
 	&:hover {
 		display: block;
 		font-weight: bold;
-		transform: scale(1.2);
+		color: hsl(358, 60%, 50%);
 	}
 }
 

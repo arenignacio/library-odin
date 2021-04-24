@@ -84,7 +84,7 @@ function renderList(books, tBody) {
 			else htmlString += `<td class="book-${key}">${book[key]}</td>`;
 		}
 
-		htmlString += `<td class="book-delete delete-btn-container"><div id="del-${idx}" class="delete-btn hidden">X</div></td></tr>`;
+		htmlString += `<td class="book-delete delete-btn-container"><div id="del-${idx}" class="delete-btn hidden">+</div></td></tr>`;
 	});
 
 	tBody.innerHTML = htmlString;
@@ -189,23 +189,6 @@ window.addEventListener('click', (e) => {
 	}
 });
 
-addBook('A Song of Ice and Fire', 'George R.R. Martin', 234, true);
-addBook('Ratata', 'Aren', 534);
-addBook('Alamat ng Matsing', 'Aren', 532);
-addBook('Meditation', 'Marcus Aurelius', 234, true);
-addBook('Ratata', 'Aren', 534);
-addBook('Alamat ng Matsing', 'Aren', 532);
-addBook('Meditation', 'Marcus Aurelius', 234, true);
-addBook('Ratata', 'Aren', 534);
-addBook('Alamat ng Matsing', 'Aren', 532);
-addBook('Meditation', 'Marcus Aurelius', 234, true);
-addBook('Ratata', 'Aren', 534);
-addBook('Alamat ng Matsing', 'Aren', 532);
-addBook('Meditation', 'Marcus Aurelius', 234, true);
-addBook('Ratata', 'Aren', 534);
-addBook('Alamat ng Matsing', 'Aren', 532);
-addBook('Meditation', 'Marcus Aurelius', 234, true);
-addBook('Ratata', 'Aren', 534);
-addBook('Alamat ng Matsing', 'Aren', 532);
-
-renderList(myLibrary, tBody);
+addBook('A Song of Ice and Fire', 'George R.R. Martin', 694, false);
+addBook('Smokes and Mirrors', 'Neil Gaiman', 384, true);
+addBook('Gone Girl', 'Gillian Flynn', 432);
