@@ -3,6 +3,7 @@ const tBody = document.querySelector('tbody');
 const buttons = document.querySelectorAll('input[type="button"]');
 const html = document.querySelector('body');
 const addBtn = document.getElementById('add-btn');
+let rect = addBtn.getBoundingClientRect();
 
 function setLibrary(value) {
 	const JSONData = JSON.stringify(value);
@@ -114,7 +115,6 @@ function renderList(books, tBody) {
 				e.target.parentNode.parentNode.remove(); //remove entire parent of parent which is tr (row > column > button)
 				const tBody = document.querySelector('tbody');
 				const library = removeBook(e.target.id.substr(4));
-				renderList(library, tBody);
 				return;
 			}
 
@@ -166,6 +166,8 @@ buttons.forEach((button) => {
 				console.log('if is true');
 			} else return;
 		}
+		rect = addBtn.getBoundingClientRect();
+		console.log(rect);
 		toggleForm();
 	});
 });
@@ -205,3 +207,5 @@ if (!localStorage.getItem('myLibrary')) {
 } else {
 	renderList(getLibrary(), tBody);
 }
+
+console.log(rect);
