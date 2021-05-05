@@ -1,9 +1,18 @@
 //Create library that you can add books to
-const myLibrary = [];
 const tBody = document.querySelector('tbody');
 const buttons = document.querySelectorAll('input[type="button"]');
 const html = document.querySelector('body');
 const addBtn = document.getElementById('add-btn');
+
+function setLibrary(value) {
+	const JSONData = JSON.stringify(value);
+	localStorage.setItem('myLibrary', JSONData);
+}
+
+function getLibrary() {
+	const myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+	return myLibrary ? myLibrary : [];
+}
 
 //book contains name, author, number pages, and read/not-read status
 function Book(title, author, pages, status) {
@@ -15,6 +24,7 @@ function Book(title, author, pages, status) {
 
 //add book to library
 function addBook(title, author, pages, status = false, idx = '') {
+	const myLibrary = getLibrary();
 	author = author === '' ? 'unknown' : author;
 	pages = pages === '' ? 'unknown' : pages;
 	const newBook = new Book(title, author, pages, status);
@@ -23,14 +33,17 @@ function addBook(title, author, pages, status = false, idx = '') {
 	else myLibrary.splice(idx.substr(1), 1, newBook); //if an index is provided, it's a cue to replace an element in array
 
 	renderList(myLibrary, tBody);
+	setLibrary(myLibrary);
 
 	return myLibrary;
 }
 
 //remove book from library
 function removeBook(index) {
+	const myLibrary = getLibrary();
 	myLibrary.splice(index, 1);
 	renderList(myLibrary, tBody);
+	setLibrary(myLibrary);
 	return myLibrary;
 }
 
@@ -63,6 +76,7 @@ function formValid() {
 //render library to table
 function renderList(books, tBody) {
 	let htmlString = '';
+	const myLibrary = getLibrary();
 
 	if (books.length === 0) {
 		tBody.innerHTML += '<tr><td>Table is empty</td></tr>';
@@ -95,9 +109,9 @@ function renderList(books, tBody) {
 	//get information from row
 	td.forEach((td) => {
 		td.addEventListener('click', (e) => {
-			//if button is clicked
+			//if delete button is clicked
 			if (e.target.classList.contains('delete-btn')) {
-				e.target.parentNode.parentNode.remove();
+				e.target.parentNode.parentNode.remove(); //remove entire parent of parent which is tr (row > column > button)
 				const tBody = document.querySelector('tbody');
 				const library = removeBook(e.target.id.substr(4));
 				renderList(library, tBody);
@@ -134,12 +148,7 @@ function renderList(books, tBody) {
 	});
 }
 
-/* TODO:
-Add new book, update book functionality */
-//if row or new book is selected, display new/update form and blur table
-
-//if it's not new book, fill in information from row
-//cancel button closes menu
+//adds event to save and cancel buttons - the only two button elements in site
 buttons.forEach((button) => {
 	button.addEventListener('click', (e) => {
 		const isValid = formValid();
@@ -153,11 +162,10 @@ buttons.forEach((button) => {
 			const idx = document.querySelector('.form-container').id;
 
 			if (isValid) {
-				addBook(title, author, pages, status, idx);
+				setLibrary(addBook(title, author, pages, status, idx));
 				console.log('if is true');
 			} else return;
 		}
-
 		toggleForm();
 	});
 });
@@ -189,6 +197,11 @@ window.addEventListener('click', (e) => {
 	}
 });
 
-addBook('A Song of Ice and Fire', 'George R.R. Martin', 694, false);
-addBook('Smokes and Mirrors', 'Neil Gaiman', 384, true);
-addBook('Gone Girl', 'Gillian Flynn', 432);
+//initialization of library
+if (!localStorage.getItem('myLibrary')) {
+	addBook('A Song of Ice and Fire', 'George R.R. Martin', 694, false);
+	addBook('Smokes and Mirrors', 'Neil Gaiman', 384, true);
+	addBook('Gone Girl', 'Gillian Flynn', 432);
+} else {
+	renderList(getLibrary(), tBody);
+}
